@@ -1,0 +1,22 @@
+#!/bin/bash
+
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_CONFIG_DIRS="/etc/xdg"
+export XDG_DATA_DIRS="/usr/local/share:/usr/share"
+
+export PATH="$PATH:$HOME/.local/bin:$HOME/.local/bin/statusbar:$HOME/.local/bin/dmenuscripts"
+
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}"/xorg/xinitrc ] && export XINITRC="${XDG_CONFIG_HOME:-$HOME/.config}"/xorg/xinitrc
+
+export TERM='xterm-256color'		# Getting proper colors
+export ALTERNATE_EDITOR='nvim'		# alternate editor for emacs
+export EDITOR="emacsclient -t -a ''"	# default terminal editor
+export VISUAL="emacsclient -c -a emacs"	# default windowed editor
+export BROWSER='firefox'		# 'surf' # default browser to run with scripts
+export TERMINAL='st'			# default terminal to run with scripts
+
+[[ -x "$(command -v bat)" ]] && export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+

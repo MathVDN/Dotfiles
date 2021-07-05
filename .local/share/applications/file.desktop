@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=File Manager
+Exec="${TERMINAL:-/usr/local/bin/st} -e lf %u"
+

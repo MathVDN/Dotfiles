@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Text editor
+Exec="${TERMINAL:-/usr/local/bin/st} -e ${EDITOR:-nvim} %u"
+

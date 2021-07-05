@@ -1,0 +1,41 @@
+#!/bin/bash
+
+export TERM='xterm-256color'
+
+export HISTCONTROL=ignoredups:erasedups
+export HISTFILESIZE=20000
+export HISTSIZE=10000
+export HISTIGNORE='&:ls:[bf]g:exit'
+
+set -o vi
+bind -m vi-command 'Control-l: clear-screen'
+bind -m vi-insert 'Control-l: clear-screen'
+
+# If not running interactively, don't do anything.
+[[ $- != *i* ]] && return
+
+shopt -s autocd
+shopt -s cdspell
+shopt -s cmdhist
+shopt -s dotglob
+shopt -s histappend
+shopt -s expand_aliases
+shopt -s checkwinsize
+
+bind 'set completion-ignore-case on'
+
+case ${TERM} in
+	xterm*|rxvt*|Eterm*|aterm|kterm|kconsole*|gnome*|st|alacritty)
+		PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#HOME/\~}\007"' ;;
+	screen*)
+		PROMPT_COMMAND='echo -ne "\033_${USER}@${HOSTNAME%%.*}:${PWD/#HOME/\~}\033\\"' ;;
+esac
+
+[ -f $XDG_CONFIG_HOME/broot/launcher/bash/br ] && source $XDG_CONFIG_HOME/broot/launcher/bash/br
+
+[ -f $XDG_CONFIG_HOME/shell/aliases ] && source $XDG_CONFIG_HOME/shell/aliases
+[ -f $XDG_CONFIG_HOME/shell/prompt ] && source $XDG_CONFIG_HOME/shell/prompt
+[ -f $XDG_CONFIG_HOME:shell/functions ] && source $XDG_CONFIG_HOME/shell/functions
+
+[ -f /etc/bash.command-not-found ] && source /etc/bash.command-not-found
+

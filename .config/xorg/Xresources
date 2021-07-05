@@ -1,0 +1,116 @@
+!!! Xft !!!
+xft.dpi: 96
+xft.rgba: rgb
+xft.antialias: true
+xft.hinting: true
+xft.autohint: true
+xft.hintstyle: hintslight
+xft.lcdfilter: lcddefault
+
+!!! XTerm !!!
+XTerm*renderFont: true
+XTerm*faceName: xft:Meslo Nerd Font:size=12, \
+		xft:Mononoki Nerd Font:size=12, \
+		xft:Hack:size=12, \
+		xft:JoyPixels:size=12, \
+		sft:monospace:style=medium:size=12
+
+XTerm*faceSize: 12
+XTerm*utf8: 2
+XTerm*locale: true
+XTerm*loginshell: true
+XTerm*savelines: 16384
+XTerm*charClass: 33:48, 36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+
+XTerm.vt100.translations: #override \n\
+			  Ctrl <Key> j: smaller-vt-font() \n\
+			  Ctrl <Key> k: larger-vt-font()
+
+/* Colors */
+/***************************/
+/*   name   * dark * light */
+/***************************/
+/* black    *  0   *  8    */
+/* red      *  1   *  9    */
+/* green    *  2   *  10   */
+/* yellow   *  3   *  11   */
+/* blue     *  4   *  12   */
+/* magenta  *  5   *  13   */
+/* cyan     *  6   *  14   */
+/* white    *  7   *  15   */
+/***************************/
+
+! Gruvbox
+*.foreground:  #EBDBB2
+*.background:  #282828
+*.cursorColor: #EBDBB2
+
+! Black
+*.color0:      #282828
+*.color8:      #928374
+
+! Red
+*.color1:      #CC241D
+*.color9:      #FB4934
+
+! Green
+*.color2:      #98971A
+*.color10:     #B8BB26
+
+! Yellow
+*.color3:      #D79921
+*.color11:     #FABD2F
+
+! Blue
+*.color4:      #458588
+*.color12:     #83A598
+
+! Magenta
+*.color5:      #B16286
+*.color13:     #D3869B
+
+! Cyan
+*.color6:      #689D6A
+*.color14:     #8EC07C
+
+! White
+*.color7:      #A89984
+*.color15:     #EBDBB2
+
+/* Dracula */
+! *.foreground:  #F8F8F2
+! *.background:  #282A36
+! *.cursorColor: #F8F8F2
+
+! Black
+! *.color0:      #3A3A3A
+! *.color8:      #4D4D4D
+
+! Red
+! *.color1:      #FF5555
+! *.color9:      #FF6E67
+
+! Green
+! *.color2:      #50FA7B
+! *.color10:     #5AF78E
+
+! Yellow
+! *.color3:      #F1FA8C
+! *.color11:     #F4F99D
+
+! Blue
+! *.color4:      #BD93F9
+! *.color12:     #3071DB
+
+! Magenta
+! *.color5:      #FF79C6
+! *.color13:     #FF92D0
+
+! Cyan
+! *.color6:      #8BE9FD
+! *.color14:     #9AEDFE
+
+! White
+! *.color7:      #BFBFBF
+! *.color15:     #E6E6E6
+

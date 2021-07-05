@@ -1,0 +1,62 @@
+#!/bin/sh
+
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
+[ -f ~/.Xmodmap ] && xmodmap ~/.Xmodmap
+[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
+
+### Here goes the daemons
+# xrandr 1920x1080            # Set screen resolution
+xcompmgr &                    # window compositing and transparency
+nitrogen --restore &          # background image
+# mpd &                         # music player deamon
+emacs -d &                    # emacs daemon
+# dunst &                       # for notifications
+unclutter &                   # remove mouse when idle
+# xautostart --locker xlock &   # screen locker
+dwmblocks &                   # status bar writer/updater
+
+## Start a Session
+# session=${1:-twm}  # session name passed as argument or twm by default
+
+# case $session in
+#  awesome|awesomewm)    exec awesome;;
+#  bsp|bspwm)            exec bspwm;;
+#  catwm)                exec catwm;;
+#  cinnamon)             exec cinnamon-session;;
+#  deepin)               exec startdde;;
+#  dwm)                  exec dwm;;
+#  ede)                  exec startede;;
+#  enlightenment)        exec enlightenment_start;;
+#  fluxbox)              exec fluxbox;;
+#  gnome)                exec gnome-session;;
+#  gnome-classic)        exec gnome-session --session=gnome-classic;;
+#  i3|i3wm)              exec i3;;
+#  icewm)                exec icewm-session;;
+#  jwm)                  exec jwm;;
+#  kde)                  exec startplasma-x11;;
+#  kde-wayland)          exec startplasma-wayland;;
+#  lxde)                 exec startlxde;;
+#  lxqt)                 exec startlxqt;;
+#  mate)                 exec mate-session;;
+#  monster|monsterwm)    exec monsterwm;;
+#  notion)               exec notion;;
+#  openbox)              exec openbox-session;;
+#  pek|pekwm)            exec pekwm;;
+#  qtile|qtilewm)        exec qtile;;
+#  spectr|spectrwm)      exec spectrwm;;
+#  xfce|xfce4)           exec startxfce4;;
+#  xmonad)               exec xmonad;;
+#  *)                    exec $1;;
+#esac
+
+## For testing purposis only!!
+# xterm & sleep 60
+
+exec dwm
+

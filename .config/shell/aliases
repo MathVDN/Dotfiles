@@ -1,0 +1,97 @@
+#!/bin/bash
+
+[ -x "$(command -v nvim)" ] && alias vim='nvim' vimdiff='nvim -d'
+[ -x "$(command -v bat)" ] && alias cat='bat'
+[ -x "$(command -v doas)" ] && alias doas='doas --'
+
+### Adding some confirmations ###
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+### Colorize commands ###
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias diff='diff --color=auto'
+alias ccat='highlight --out-format=ansi'
+
+### Ls with Exa ###
+alias ls='exa -al --color=always --group-directories-first'
+alias la='exa -a --color=always --group-directories-first'
+alias ll='exa -l --color=always --group-directories-first'
+alias lt='exa -aT --color=always --group-directories-first'
+alias l.='exa -a | grep "^\."'
+
+### Adding some flags ###
+alias bc='bc -ql'
+alias br='broot -dhp'
+alias bs='broot --sizes'
+alias df='df -h'
+alias mkd='mkdir -pv'
+alias free='free -m'
+alias diskspace='du -S | sort -nr | more'
+alias folders='find . -maxdepth 1 -type d -print | xargs du -sk | sort -nr'
+alias jctl=' journalctl -p 3 -xb'
+alias lynx='lynx -cfg=~/.config/lynx/lynx.cfg -lss=~/.config/lynx/lynx.lss -vikeys'
+
+### X11 ###
+[ -f "$XINITRC" ] && alias startx='startx $XINITRC'
+alias xresmerge="xrdb -merge ${XDG_CONFIG_HOME:-$HOME/.config}/xorg/Xresources"
+#alias xmodmerge=""
+
+### Process utils ###
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head 10'
+
+alias pscpu='ps auxf | sort -nr -k 3'
+alias pscpu10='ps auxf | sort -nr -k 3 | head 10'
+
+### Pacman/Paru ###
+alias pacsyu='sudo pacman -Syu'                    # update only standard pkgs
+alias parsua='paru -Sua --no-confirm'              # Update only AUR pkgs
+alias parsyu='paru -Syu --no-confirm'              # Update standard pkgs and AUR pkgs
+alias unlock='sudo rm /var/lib/pacman/db.lck'      # Remove pacman lock
+alias cleanup='sudo pacman -Rns (pacman -Qtdq)'    # Remove orphaned packages
+
+### Mirror fetching ###
+alias mirror='sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist'
+alias mirrord='sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist'
+alias mirrors='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist'
+alias mirrora='sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist'
+
+### Git ###
+alias addup='git add -u'
+alias addall='git add .'
+alias branch='git branch'
+alias checkout='git checkout'
+alias clone='git clone'
+alias commit='git commit -m'
+alias fetch='git fetch'
+alias pull='git pull origin'
+alias push='git push origin'
+alias stat='git status'
+alias tag='git tag'
+alias newtag='git tag -a'
+alias dotfiles='git --git-dir=$HOME/Dotfiles --work-tree=$HOME'	# Use Dotfiles directory to store the .git directory in place of $HOME
+
+### GPG ###
+alias gpg-check='gpg2 --keyserver-options auto-key-retrieve --verify'
+alias gpg-retrieve='gpg2 --keyserver-options auto-key-retrieve --recieve-keys'
+
+### Shell switcher ###
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+
+### Youtube dl ###
+alias ytdl='youtube-dl --add-metadata -i'
+alias yta-aac='ytdl --extract-audio --audio-format aac '
+alias yta-best='ytdl --extract-audio --audio-format best '
+alias yta-flac='ytdl --extract-audio --audio-format flac '
+alias yta-m4a='ytdl --extract-audio --audio-format m4a '
+alias yta-mp3='ytdl --extract-audio --audio-format mp3 '
+alias yta-opus='ytdl --extract-audio --audio-format opus '
+alias yta-vorbis='ytdl --extract-audio --audio-format vorbis '
+alias yta-wav='ytdl --extract-audio --audio-format wav '
+alias ytv='ytdl -x -f bestvideo+bestaudio '
+
